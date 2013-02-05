@@ -1,0 +1,78 @@
+<table cellpadding="6" cellspacing="1" border="1">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Sub Total</th>    
+  </tr>
+      
+  <% for cart in @carts %>
+    <tr>
+    	<td><%= cart.product.name %></td>
+      <td><%= cart.product.price %></td>
+      <td><%= cart.quantity %></td>
+      <td><%= cart.sub_total %></td>
+    </tr>    
+  <% end %>  
+  <tr>
+  	<td colspan="2"></td>
+  	<td style="text-align=right"><strong>Total</strong></td>
+  	<td style="text-align=right"><strong><%= Cart.select(:sub_total).sum(:sub_total) %> </strong></td>
+  </tr>
+</table>
+
+<br/>
+<h1> <u>Shipping Information</u> </h1>
+
+<%= form_tag 'confirm' do -%>
+  <table>
+    <tr>
+      <td>First name:</td>
+      <td><%= text_field_tag :shipping_first_name, '', size: '30', maxlength: '30' %></td>
+    </tr>
+
+    <tr>
+      <td>Last name:</td>
+      <td><%= text_field_tag :shipping_last_name, '', size: '30', maxlength: '30' %></td>
+    </tr>
+
+    <tr>
+      <td>Address 1:</td>
+      <td><%= text_field_tag :shipping_address1, '', size: '30', maxlength: '30' %></td>
+    </tr>
+
+    <tr>
+      <td>Address 2:</td>
+      <td><%= text_field_tag :shipping_address2, '', size: '30', maxlength: '30' %></td>
+    </tr>
+
+    <tr>
+      <td>City:</td>
+      <td><%= text_field_tag :shipping_city, '', size: '30', maxlength: '30' %></td>
+    </tr>
+
+    <tr>
+      <td>Country code:</td>
+      <td><%= text_field_tag :shipping_country_code, 'IDN', size: '3', maxlength: '3' %></td>
+    </tr>
+
+    <tr>
+      <td>Postal code:</td>
+      <td><%= text_field_tag :shipping_postal_code, '', size: '9', maxlength: '9' %></td>
+    </tr>
+
+    <tr>
+      <td>Phone:</td>
+      <td><%= text_field_tag :shipping_phone, '', size: '19', maxlength: '19' %></td>
+    </tr>
+
+    <tr>
+      <td>Email:</td>
+      <td><%= email_field_tag :email, '', size: '45', maxlength: '45' %></td>
+    </tr>
+    
+  </table>
+
+  <br/>
+  <%= submit_tag("Go to checkout page") %>
+<% end %>
