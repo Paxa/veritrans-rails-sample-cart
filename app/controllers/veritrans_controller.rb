@@ -37,8 +37,6 @@ class VeritransController < ApplicationController
     params["commodity"] = []
 
     @carts.each do |item|
-      p "subtotal"
-      p item.sub_total
       params["commodity"] << { "COMMODITY_ID" => item.product_id, "COMMODITY_PRICE" => item.product.price.to_s, "COMMODITY_QTY" => item.quantity.to_s, 
                                 "COMMODITY_NAME1" => item.product.name, "COMMODITY_NAME2" => item.product.name }      
     end
@@ -57,14 +55,11 @@ class VeritransController < ApplicationController
     client.shipping_country_code  = "IDN"
     client.shipping_postal_code   = params[:shipping_postal_code]
     client.shipping_phone         = params[:shipping_phone]
-
     
     client.email = params[:email] # notification email
 
     client.get_keys
     @client = client
-
-    puts client.inspect
     
     render :layout => 'application'
   end
@@ -74,9 +69,6 @@ class VeritransController < ApplicationController
   #      "sessionId"=>"session837985748788668181718189"}
   def unfinish
     # logic after user cancel the transaction
-
-    puts "cccccccccccccc"
-    puts params.inspect
   end
 
   # Server to Server post-notification(action) from Veritrans to Merchants Server 
@@ -86,13 +78,6 @@ class VeritransController < ApplicationController
   #      "vResultCode"=>"C001000000000000",
   #      "TOKEN_MERCHANT"=>"dYWRjRr2ZbJEqMQaqDLIaWeoLl1Tuk3g7g3T1gKGrE5ibYJoZ4"}
   def notification
-    # logic to check:
-    # 1.validate request
-    # 2.update db if valid 
-
-    puts "vvvvvvvvvvvvvv"
-    puts params.inspect
-
     render :text => "OK"  
   end
 
@@ -103,7 +88,6 @@ class VeritransController < ApplicationController
   #      "sessionId"=>"session837985748788668181718189"}
   def finish
     # logic after success transaction accured
-    puts params.inspect
   end
 
   # need scenario that could be try
@@ -114,10 +98,6 @@ class VeritransController < ApplicationController
   #      "sessionId"=>"session837985748788668181718189"}
   def error
     # logic after error transaction accured
-
-    puts "eeeeeeeeeeeeee"
-    puts params.inspect
-
     render :text => "ERROR"
   end
 
