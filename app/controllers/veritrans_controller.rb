@@ -34,6 +34,8 @@ class VeritransController < ApplicationController
 
     # Example 
     @carts = Cart.all
+    @total = Cart.select(:sub_total).sum(:sub_total)
+    
     params["commodity"] = []
 
     @carts.each do |item|

@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 	def index    
     @carts = Cart.all
+    @total = Cart.select(:sub_total).sum(:sub_total)
   end
   
   def show
