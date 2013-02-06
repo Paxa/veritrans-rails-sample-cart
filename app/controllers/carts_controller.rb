@@ -11,13 +11,13 @@ class CartsController < ApplicationController
   end
   
   def create
-    cart = params[:cart]
+    cart = params[:cart]    
     product = Product.find(cart[:product_id])
 
     item = Cart.where(product_id: product.id).first
 
-    if item
-      item.quantity += cart[:quantity].to_i
+    if item      
+      item.quantity = item.quantity.to_i + cart[:quantity].to_i
       item.sub_total = (product.price * item.quantity)    
     else
       item = Cart.new(cart)
