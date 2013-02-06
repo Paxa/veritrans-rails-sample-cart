@@ -17,7 +17,6 @@ Langkah-langkah code integrasi:
    d. match 'finish'  => 'veritrans#finish',  :via => :post #...server to server redirection
    e. match 'unfinish'=> 'veritrans#unfinish',:via => :get  #...link-back to merchant web
    f. match 'error'   => 'veritrans#error',   :via => :post #...server to server redirection
-   #.....ROUTES
 
 Untuk membuat struktur database sample store dan generate sample data
 
