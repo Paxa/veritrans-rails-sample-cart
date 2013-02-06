@@ -1,3 +1,25 @@
+== Contoh Simple Aplikasi Rails menggunakan Veritrans Payment Gateway
+
+Langkah-langkah code integrasi:
+
+1. tambahkan gem "veritrans" di "/Gemfile"
+
+2. buat routing yang di butuhkan untuk checkout menggunakan Veritrans Payment Gateway
+
+   #.....ROUTES Example:
+   a. root :to => 'home#index' #................................checkout form
+
+   b. match 'confirm' => 'veritrans#confirm', :via => :post #...confirmation (autosubmit to veritrans server)
+   c. match 'postvtw' => 'veritrans#postvtw', :via => :post #...server to server notification
+   d. match 'finish'  => 'veritrans#finish',  :via => :post #...server to server redirection
+   e. match 'unfinish'=> 'veritrans#unfinish',:via => :get  #...link-back to merchant web
+   f. match 'error'   => 'veritrans#error',   :via => :post #...server to server redirection
+   #.....ROUTES
+
+3. 
+
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
