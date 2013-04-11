@@ -29,7 +29,7 @@ class VeritransController < ApplicationController
   def confirm
     puts params.inspect
     client = ::Veritrans::Client.new
-    client.order_id     =   "dummy#{(0...12).map{65.+(rand(25))}.join}"
+    client.order_id     = SecureRandom.hex(5)
     client.session_id   = "session#{(0...12).map{65.+(rand(25))}.join}"
 
     # Example 
@@ -39,8 +39,8 @@ class VeritransController < ApplicationController
     params["commodity"] = []
 
     @carts.each do |item|
-      params["commodity"] << { "COMMODITY_ID" => item.product_id, "COMMODITY_PRICE" => item.product.price.to_s, "COMMODITY_QTY" => item.quantity.to_s, 
-                                "COMMODITY_NAME1" => item.product.name, "COMMODITY_NAME2" => item.product.name }      
+      params["commodity"] << { "commodity_id" => item.product_id, "commodity_num" => item.product.price.to_s, "commodity_qty" => item.quantity.to_s, 
+                                "commodity_name1" => item.product.name, "commodity_name2" => item.product.name }      
     end
     
     client.gross_amount = Cart.select(:sub_total).sum(:sub_total).to_s
@@ -58,11 +58,11 @@ class VeritransController < ApplicationController
     client.shipping_postal_code   = params[:shipping_postal_code]
     client.shipping_phone         = params[:shipping_phone]
     
-    client.email = params[:email] # notification email
+    client.shipping_email = params[:shipping_email] # notification email
 
     client.get_keys
     @client = client
-    
+    p @client.token
     render :layout => 'application'
   end
 

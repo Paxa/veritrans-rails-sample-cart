@@ -1,9 +1,11 @@
 <h1 align="center">Confirm Purchase Items</h1>
+
+<%= p @client.token %>
  
 <%= form_tag(@client.redirect_url, :name => "form_auto_post") do -%>
-	<input type="hidden" name="MERCHANT_ID" value="<%= @client.merchant_id %>"> 
-	<input type="hidden" name="ORDER_ID" value="<%= @client.order_id %>">
-	<input type="hidden" name="TOKEN_BROWSER" value="<%= @client.token["TOKEN_BROWSER"] %>">
+	<input type="hidden" name="merchant_id" value="<%= @client.merchant_id %>"> 
+	<input type="hidden" name="order_id" value="<%= @client.order_id %>">
+	<input type="hidden" name="token_browser" value="<%= @client.token["TOKEN_BROWSER"] %>">
 	<table border="1" align="center" width="80%" cellpadding="10" bgcolor="#FFFFCC">
 		<tr>
     <th>Name</th>

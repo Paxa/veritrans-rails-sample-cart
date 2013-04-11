@@ -22,7 +22,9 @@ end
 
 gem 'jquery-rails'
 
-gem 'veritrans'
+gem 'veritrans', '1.2.1'
+
+gem 'pry'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -38,3 +40,6 @@ gem 'veritrans'
 
 # To use debugger
 # gem 'debugger'
+
+# Puma app server
+gem 'puma'
