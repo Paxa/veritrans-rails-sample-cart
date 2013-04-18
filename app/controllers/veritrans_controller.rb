@@ -31,6 +31,7 @@ class VeritransController < ApplicationController
     client = ::Veritrans::Client.new
     client.order_id     = SecureRandom.hex(5)
     client.session_id   = "session#{(0...12).map{65.+(rand(25))}.join}"
+    client.merchant_hash_key = CONFIG[:merchant_hash_key]
 
     # Example 
     @carts = Cart.all
@@ -43,7 +44,7 @@ class VeritransController < ApplicationController
                                 "commodity_name1" => item.product.name, "commodity_name2" => item.product.name }      
     end
     
-    client.gross_amount = Cart.select(:sub_total).sum(:sub_total).to_s
+    # client.gross_amount = Cart.select(:sub_total).sum(:sub_total).to_s
     client.commodity    = params["commodity"]
 
     client.billing_address_different_with_shipping_address = BILLING_DIFFERENT_ADDRESS
@@ -61,6 +62,7 @@ class VeritransController < ApplicationController
     client.shipping_email = params[:shipping_email] # notification email
 
     client.get_keys
+    
     @client = client
     p @client.token
     render :layout => 'application'

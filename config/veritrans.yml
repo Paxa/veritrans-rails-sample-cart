@@ -1,5 +1,5 @@
 development:
-  merchant_id: "T100000000000001000012"  
+  merchant_id: "A100000000000001000012"  
   merchant_hash_key: "d1832e368b101a814dd3f44b4b6305d50bb0bcca910b6055e406404e0ed33634"
   # merchant_id: "sample1"
   # merchant_hash_key: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz0123456789012345678901"
@@ -10,7 +10,7 @@ development:
 
 production:
   merchant_id: "A100000000000001000012"
-  merchant_hash_key: "8645c50adf5db6f583534018c8b27b524735634e407d018178da3dc88253ec71"
+  merchant_hash_key: "d1832e368b101a814dd3f44b4b6305d50bb0bcca910b6055e406404e0ed33634"
   unfinish_payment_return_url: "http://localhost:3000/cancel_pay"
   finish_payment_return_url: "http://localhost:3000/finish"
   error_payment_return_url: "http://localhost:3000/error"
