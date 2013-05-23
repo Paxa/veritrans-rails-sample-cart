@@ -58,7 +58,7 @@ class VeritransController < ApplicationController
     client.shipping_country_code  = "IDN"
     client.shipping_postal_code   = params[:shipping_postal_code]
     client.shipping_phone         = params[:shipping_phone]
-    client.promo_bins             = ["1111sdfsd","444444"]
+    # client.promo_bins             = ["1111","444444"]
     
     # client.shipping_email = params[:shipping_email] # notification email
     client.email = params[:shipping_email] # notification email
