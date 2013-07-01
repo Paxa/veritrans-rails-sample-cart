@@ -58,6 +58,7 @@ class VeritransController < ApplicationController
     client.shipping_country_code  = "IDN"
     client.shipping_postal_code   = params[:shipping_postal_code]
     client.shipping_phone         = params[:shipping_phone]
+    
     client.promo_bins             = ["411111","444444"]
     
     client.email = params[:email] # notification email
@@ -67,6 +68,7 @@ class VeritransController < ApplicationController
     client.installment = '1'
     client.installment_type = '1'
     client.bank = 'bni'
+
     client.get_keys
     
     @client = client
