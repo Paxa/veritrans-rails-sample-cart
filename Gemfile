@@ -22,7 +22,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'veritrans', '1.2.1'
+gem 'veritrans', '1.2.3'
 
 gem 'pry'
 
