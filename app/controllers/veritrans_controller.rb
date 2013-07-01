@@ -37,18 +37,18 @@ class VeritransController < ApplicationController
     @carts = Cart.all
     @total = Cart.select(:sub_total).sum(:sub_total)
     
-    params["commodity"] = []
+    params["commodity"] = []    
 
     @carts.each do |item|
-      params["commodity"] << { "commodity_id" => item.product_id, "commodity_num" => item.product.price.to_s, "commodity_qty" => item.quantity.to_s, 
-                                "commodity_name1" => item.product.name, "commodity_name2" => item.product.name }      
+      params["commodity"] << { "COMMODITY_ID" => item.product_id, "COMMODITY_UNIT" => item.product.price.to_s, "COMMODITY_NUM" => item.quantity.to_s, 
+                                "COMMODITY_NAME1" => item.product.name, "COMMODITY_NAME2" => item.product.name }
     end
     
-    # client.gross_amount = Cart.select(:sub_total).sum(:sub_total).to_s
+    client.gross_amount = Cart.select(:sub_total).sum(:sub_total).to_s
     client.commodity    = params["commodity"]
 
     client.billing_address_different_with_shipping_address = BILLING_DIFFERENT_ADDRESS
-    client.required_shipping_address = REQUIRED_SHIPPING_ADDRESS
+    client.required_shipping_address = 1
 
     client.shipping_first_name    = params[:shipping_first_name]
     client.shipping_last_name     = params[:shipping_last_name]
@@ -58,9 +58,15 @@ class VeritransController < ApplicationController
     client.shipping_country_code  = "IDN"
     client.shipping_postal_code   = params[:shipping_postal_code]
     client.shipping_phone         = params[:shipping_phone]
+    client.promo_bins             = ["411111","444444"]
     
-    client.shipping_email = params[:shipping_email] # notification email
-
+    client.email = params[:email] # notification email
+    
+    client.payment_type = '01'
+    client.enable_3d_secure = 1
+    client.installment = '1'
+    client.installment_type = '1'
+    client.bank = 'bni'
     client.get_keys
     
     @client = client
