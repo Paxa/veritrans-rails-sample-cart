@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  
 	def index
     @cart = Cart.new
     @products = Product.all

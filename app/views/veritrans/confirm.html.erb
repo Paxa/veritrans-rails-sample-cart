@@ -6,12 +6,9 @@
 	<input type="hidden" name="merchant_id" value="<%= @client.merchant_id %>"> 
 	<input type="hidden" name="order_id" value="<%= @client.order_id %>">
 	<input type="hidden" name="token_browser" value="<%= @client.token["TOKEN_BROWSER"] %>">
-  <!-- if installment -->
-	<input type="hidden" name="installment" value="<%= @client.installment %>">
-	<input type="hidden" name="bank" value="<%= @client.bank %>">
-	<input type="hidden" name="installment_type" value="<%= @client.installment_type %>">
-  <!-- end if installment -->
-  
+  <input type="hidden" name="installment" value="<%= @client.installment %>">
+  <input type="hidden" name="installment_banks" value="<%= @client.installment_banks %>">
+
 	<table border="1" align="center" width="80%" cellpadding="10" bgcolor="#FFFFCC">
 		<tr>
     <th>Name</th>

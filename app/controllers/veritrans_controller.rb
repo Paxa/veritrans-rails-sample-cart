@@ -63,13 +63,13 @@ class VeritransController < ApplicationController
     client.email = params[:email] # notification email
     
     client.payment_type = '01'
-    client.enable_3d_secure = 1
+    #client.enable_3d_secure = '1'
     client.installment = '1'
-    client.installment_type = '1'
-    client.bank = 'bni'
+    client.installment_banks = ["mandiri", "bni", "cimb", "bii"]
+    client.point = '1'
+    client.point_banks = ["cimb", "mandiri", "bni", "bca"]
 
     client.get_keys
-    
     @client = client
     p @client.token
     render :layout => 'application'
