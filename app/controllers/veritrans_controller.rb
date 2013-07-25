@@ -60,6 +60,7 @@ class VeritransController < ApplicationController
     client.shipping_phone         = params[:shipping_phone]
     client.promo_bins             = ["411111","444444"]
     
+    # client.shipping_email = params[:shipping_email] # notification email
     client.email = params[:email] # notification email
     
     client.payment_type = '01'
