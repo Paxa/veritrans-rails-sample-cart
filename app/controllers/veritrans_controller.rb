@@ -65,10 +65,10 @@ class VeritransController < ApplicationController
     
     client.payment_type = '01'
     # client.enable_3d_secure = 1
-    client.installment = 1
-    client.installment_type = '1'
+    # client.installment = 1
+    # client.installment_type = '1'
     client.installment_banks = ['bni']
-    client.point = 1
+    # client.point = 1
     client.point_banks = ['bni', 'cimb']
 
     client.get_keys
