@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: password01
+  database: veritrans_example

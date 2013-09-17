@@ -11,7 +11,7 @@ class CartsController < ApplicationController
   end
   
   def create
-    cart = params[:cart]    
+    cart = params[:cart]
     product = Product.find(cart[:product_id])
 
     item = Cart.where(product_id: product.id).first
@@ -25,7 +25,7 @@ class CartsController < ApplicationController
     end
 
     if item.save
-        flash[:notice] = "Successfully Add to cart."
+      flash[:notice] = "Successfully Add to cart."
     end
 
     redirect_to carts_url

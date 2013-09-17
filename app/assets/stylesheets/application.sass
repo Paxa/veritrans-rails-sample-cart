@@ -1,0 +1,87 @@
+@import "bourbon"
+@import "grid-settings"
+@import "neat"
+
+$base_fontsize: 14px
+$baseline: golden-ratio($base_fontsize, 1)
+
+html
+  +radial-gradient(#f0f0f5, #f0f1ed)
+  :background-repeat none
+  :font-size $base_fontsize
+  :line-height $baseline
+
+@import "normalize"
+
+= children-inline
+  > *
+    +inline-block
+
+.container
+  +outer-container
+  :margin
+    :top 3em
+  > header
+    +children-inline
+    +clearfix
+    :height $baseline * 3
+    a
+      +span-columns(3)
+      img
+        :height 30px
+    h4
+      +span-columns(6)
+      :line-height 30px
+      :margin
+        :bottom 0
+        :top 0
+      :color #6E8FB3
+      :text-align center
+
+  .content
+    +clearfix
+    :background #fff
+    :padding 10px 16px
+    :border-radius 12px
+    +box-shadow(0 0 18px 3px hsla(0, 0%, 0%, 0.25))
+
+    > h1
+      :margin-bottom 1.3em
+
+    > .flash-message
+      +linear-gradient(#1e5799, #2989d8)
+      +border-top-radius(12px)
+      :margin -10px -16px 10px -16px
+      :padding $baseline / 4 0
+      :text-align center
+      ~ .flash-message
+        :border-radius 0
+      &.notice
+        +linear-gradient(#AFE6AD, darken(#AFE6AD, 5%))
+        :color rgb(61, 75, 15)
+      &.alert, &.error
+        :background #ff515b
+        :color darken(#ff515b, 50%)
+      &.warning
+        :background #e9e3a9
+        :color #544025
+
+    .product
+      +span-columns(3)
+      :text-align center
+      figure
+        :margin-bottom $baseline / 2
+        img
+          :max-width 80%
+      span
+        :display block
+        :font-size 18px
+      .price
+        :font-style italic
+        :margin-bottom $baseline / 2
+      input[type=submit]
+        :margin-left $gutter / 4
+        +button(#26d390)
+        :border
+          :radius 2px
+          :color rgba(#000, 0.2)

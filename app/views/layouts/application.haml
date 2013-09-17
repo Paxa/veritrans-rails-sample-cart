@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title= yield(:title) || "Untitled"
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    = csrf_meta_tag
+    = yield(:head)
+  %body
+    %a{href: "https://github.com/veritrans/veritrans-rails-sample-cart"}
+      %img{alt: "Fork me on GitHub", src: "https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png", style: "position: absolute; top: 0; right: 0; border: 0;"}/
+
+    .container
+      %header
+        = link_to image_tag('logo.png'), :root
+        %h4 You are seeing VT-Web example store
+
+      .content
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :class => "flash-message #{name}"
+
+        = content_tag :h1, yield(:title) if show_title?
+        = yield
