@@ -5,7 +5,7 @@ Example implementation of Veritrans VTLink integration checkout using Ruby on Ra
 
 Langkah-langkah code integrasi:
 
-- Tambahkan `gem "veritrans"` di "/Gemfile"
+- Tambahkan `gem "veritrans"` di "Gemfile"
 
 - Buat routing yang di butuhkan untuk checkout menggunakan Veritrans Payment Gateway
 
