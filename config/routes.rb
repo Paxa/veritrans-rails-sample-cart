@@ -1,6 +1,16 @@
 Store::Application.routes.draw do
-  resources :products
+  resources :products, :only => [:index]
   resources :carts
+
+=begin
+  resource :cart do
+    member do
+      get 'add'
+      get 'remove'
+      get 'quantity'
+    end
+  end
+=end
 
   match 'confirm'      => 'veritrans#confirm',      :via => :post # confirmation autosubmit to veritrans server
   match 'unfinish'     => 'veritrans#unfinish',   :via => :post # canceling transaction redirect back to merchant-web

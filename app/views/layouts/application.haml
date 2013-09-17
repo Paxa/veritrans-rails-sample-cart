@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title= yield(:title) || "Untitled"
+    %title= yield(:title) || @page_title || "Example cart - veritrans"
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tag
@@ -21,3 +21,11 @@
 
         = content_tag :h1, yield(:title) if show_title?
         = yield
+
+      %footer
+        Veritrans &copy; 2013
+        &nbsp;|&nbsp;
+        = link_to "Source code", "https://github.com/veritrans/veritrans-rails-sample-cart"
+        &nbsp;|&nbsp;
+        Build with #{link_to "Ruby on Rails", "http://rubyonrails.org/"}
+        and #{link_to 'gem "veritrans"', "http://rubygems.org/gems/veritrans"} for study purpose

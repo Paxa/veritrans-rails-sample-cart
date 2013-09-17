@@ -5,6 +5,8 @@
 $base_fontsize: 14px
 $baseline: golden-ratio($base_fontsize, 1)
 
+$offset_top: 14px
+
 html
   +radial-gradient(#f0f0f5, #f0f1ed)
   :background-repeat none
@@ -41,7 +43,7 @@ html
   .content
     +clearfix
     :background #fff
-    :padding 10px 16px
+    :padding $offset_top 16px
     :border-radius 12px
     +box-shadow(0 0 18px 3px hsla(0, 0%, 0%, 0.25))
 
@@ -51,7 +53,7 @@ html
     > .flash-message
       +linear-gradient(#1e5799, #2989d8)
       +border-top-radius(12px)
-      :margin -10px -16px 10px -16px
+      :margin -$offset_top -16px $offset_top -16px
       :padding $baseline / 4 0
       :text-align center
       ~ .flash-message
@@ -66,22 +68,49 @@ html
         :background #e9e3a9
         :color #544025
 
-    .product
-      +span-columns(3)
-      :text-align center
-      figure
-        :margin-bottom $baseline / 2
-        img
-          :max-width 80%
-      span
-        :display block
-        :font-size 18px
-      .price
-        :font-style italic
-        :margin-bottom $baseline / 2
-      input[type=submit]
-        :margin-left $gutter / 4
-        +button(#26d390)
-        :border
-          :radius 2px
-          :color rgba(#000, 0.2)
+  > footer
+    :text-align center
+    :margin
+      :top $baseline / 2
+      :bottom $baseline / 2
+    :color #888
+    a
+      :color darken(#6E8FB3, 5%)
+
+// widget
+
+%button
+  +button(#26d390)
+  :border
+    :radius 2px
+    :color rgba(#000, 0.2)
+
+.product
+  +span-columns(3)
+  :text-align center
+  :margin-bottom $baseline
+  figure
+    :margin-bottom $baseline / 2
+    img
+      :max-width 66%
+  span
+    :display block
+    :font-size 18px
+  .price
+    :font-style italic
+    :margin-bottom $baseline / 2
+  input[type=submit]
+    :margin-left $gutter / 4
+    @extend %button
+
+.checkout-page
+  table.fields
+    +span-columns(8)
+    :margin-bottom $baseline / 2
+    td
+      +span-columns(3 of 8)
+      :margin-bottom $baseline / 4
+  .form-buttons
+    +span-columns(12)
+    input[type=submit]
+      @extend %button

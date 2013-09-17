@@ -4,8 +4,4 @@ class ApplicationController < ActionController::Base
   before_filter do
     #flash[:notice] = "Successfully Add to cart."
   end
-
-  def current_cart
-    
-  end
 end

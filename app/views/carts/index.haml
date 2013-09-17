@@ -1,0 +1,56 @@
+- @page_title = "Checkout page"
+.checkout-page
+  %table{border: "1", cellpadding: "6", cellspacing: "1"}
+    %tr
+      %th Name
+      %th Price
+      %th Quantity
+      %th Sub Total
+    - for cart in @carts
+      %tr
+        %td= cart.product.name
+        %td= number_to_currency cart.product.price
+        %td= cart.quantity
+        %td= number_to_currency cart.sub_total
+    %tr
+      %td{colspan: "2"}
+      %td{style: "text-align=right"}
+        %strong Total
+      %td{style: "text-align=right"}
+        %strong= number_to_currency @total
+  %br/
+  %h1
+    %u Shipping Information
+  = form_tag 'confirm' do
+    %table.fields
+      %tr
+        %td First name:
+        %td= text_field_tag :shipping_first_name, '', size: '30', maxlength: '30'
+      %tr
+        %td Last name:
+        %td= text_field_tag :shipping_last_name, '', size: '30', maxlength: '30'
+      %tr
+        %td Address 1:
+        %td= text_field_tag :shipping_address1, '', size: '30', maxlength: '30'
+      %tr
+        %td Address 2:
+        %td= text_field_tag :shipping_address2, '', size: '30', maxlength: '30'
+      %tr
+        %td City:
+        %td= text_field_tag :shipping_city, '', size: '30', maxlength: '30'
+      %tr
+        %td Country code:
+        %td= text_field_tag :shipping_country_code, 'IDN', size: '3', maxlength: '3'
+      %tr
+        %td Postal code:
+        %td= text_field_tag :shipping_postal_code, '', size: '9', maxlength: '9'
+      %tr
+        %td Phone:
+        %td= text_field_tag :shipping_phone, '', size: '19', maxlength: '19'
+      %tr
+        %td Email:
+        %td= email_field_tag :email, '', size: '45', maxlength: '45'
+
+    .form-buttons
+      = submit_tag("Go to checkout page")
+      = submit_tag("I'm lazy, fill form for me")

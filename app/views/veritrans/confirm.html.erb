@@ -1,36 +1,36 @@
 <h1 align="center">Confirm Purchase Items</h1>
 
 <%= p @client.token %>
- 
-<%= form_tag(@client.redirect_url, :name => "form_auto_post") do -%>
-	<input type="hidden" name="merchant_id" value="<%= @client.merchant_id %>"> 
-	<input type="hidden" name="order_id" value="<%= @client.order_id %>">
-	<input type="hidden" name="token_browser" value="<%= @client.token["TOKEN_BROWSER"] %>">
 
-	<table border="1" align="center" width="80%" cellpadding="10" bgcolor="#FFFFCC">
-		<tr>
+<%= form_tag(@client.redirect_url, :name => "form_auto_post") do -%>
+  <input type="hidden" name="merchant_id" value="<%= @client.merchant_id %>">
+  <input type="hidden" name="order_id" value="<%= @client.order_id %>">
+  <input type="hidden" name="token_browser" value="<%= @client.token["TOKEN_BROWSER"] %>">
+
+  <table border="1" align="center" width="80%" cellpadding="10" bgcolor="#FFFFCC">
+    <tr>
     <th>Name</th>
     <th>Price</th>
     <th>Quantity</th>
-    <th>Sub Total</th>    
+    <th>Sub Total</th>
   </tr>
-      
+
   <% for cart in @carts %>
     <tr>
-    	<td><%= cart.product.name %></td>
+      <td><%= cart.product.name %></td>
       <td><%= cart.product.price %></td>
       <td><%= cart.quantity %></td>
       <td><%= cart.sub_total %></td>
-    </tr>    
-  <% end %>  
+    </tr>
+  <% end %>
   <tr>
-  	<td colspan="2"></td>
-  	<td style="text-align=right"><strong>Total</strong></td>
-  	<td style="text-align=right"><strong><%= @total %> </strong></td>
+    <td colspan="2"></td>
+    <td style="text-align=right"><strong>Total</strong></td>
+    <td style="text-align=right"><strong><%= @total %> </strong></td>
   </tr>
-	</table>
-	<br><br>
-	<div align="center">
-	<input type="submit" value="Go to payment page">
-	</div>
+  </table>
+  <br><br>
+  <div align="center">
+  <input type="submit" value="Go to payment page">
+  </div>
 <% end %>
