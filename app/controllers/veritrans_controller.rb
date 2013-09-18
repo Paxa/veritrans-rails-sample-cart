@@ -27,7 +27,7 @@ class VeritransController < ApplicationController
   # TOKEN_MERCHANT = dYWRjRr2ZbJEqMQaqDLIaWeoLl1Tuk3g7g3T1gKGrE5ibYJoZ4
   # TOKEN_BROWSER  = lh4TxpAyB2NhrKTlqGbW1LRPoA6RgyI6roJ2EIII6J29j7gYoP
   def confirm
-    puts params.inspect
+    #puts params.inspect
     client = ::Veritrans::Client.new
     client.order_id     = SecureRandom.hex(5)
     client.session_id   = "session#{(0...12).map{65.+(rand(25))}.join}"

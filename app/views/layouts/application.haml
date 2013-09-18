@@ -3,7 +3,8 @@
   %head
     %title= yield(:title) || @page_title || "Example cart - veritrans"
     = stylesheet_link_tag :application
-    = javascript_include_tag :application
+    = # we don't need it now
+    = #javascript_include_tag :application
     = csrf_meta_tag
     = yield(:head)
   %body

@@ -4,12 +4,17 @@ gem 'rails', '4.0.0'
 
 gem 'haml'
 
-gem 'mysql2', :group => :development
-gem "pg"
+gem 'mysql2'
+gem "pg", :group => :development
+
+gem 'veritrans', '1.2.2'
 
 # for Heroku
-gem "pg", :group => :production
-gem 'rails_12factor', :group => :production
+group :heroku do
+  gem "pg"
+  gem 'rails_12factor'
+  gem 'thin'
+end
 
 group :assets do
   # gem 'coffee-rails', '~> 4.0'
@@ -17,15 +22,9 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
-end
-
-#group :development, :assets do
+  # gem 'uglifier', '>= 1.0.3'
   gem 'sass-rails', '~> 4.0'
   gem 'bourbon'
   gem 'neat'
-#end
-
-gem 'jquery-rails'
-
-gem 'veritrans', '1.2.2'
+  gem 'jquery-rails'
+end

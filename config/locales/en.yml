@@ -8,4 +8,4 @@ en:
         precision: 0
         delimiter: '.'
         format: "%u %n"
-        unit: "Rp "
+        unit: "Rp. "
