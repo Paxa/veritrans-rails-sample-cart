@@ -34,17 +34,22 @@ class VeritransController < ApplicationController
     client.merchant_hash_key = CONFIG[:merchant_hash_key]
 
     # Example
-    @carts = Cart.all
-    @total = Cart.select(:sub_total).sum(:sub_total)
+    @carts = session_stored_carts
+    @total = @carts.to_a.map(&:sub_total).inject(:+)
 
     params["commodity"] = []
 
     @carts.each do |item|
-      params["commodity"] << { "COMMODITY_ID" => item.product_id, "COMMODITY_UNIT" => item.product.price.to_s, "COMMODITY_NUM" => item.quantity.to_s,
-                                "COMMODITY_NAME1" => item.product.name, "COMMODITY_NAME2" => item.product.name }
+      params["commodity"] << {
+        "COMMODITY_ID" => item.product_id,
+        "COMMODITY_UNIT" => item.product.price.to_s,
+        "COMMODITY_NUM" => item.quantity.to_s,
+        "COMMODITY_NAME1" => item.product.name,
+        "COMMODITY_NAME2" => item.product.name
+      }
     end
 
-    client.gross_amount = Cart.select(:sub_total).sum(:sub_total).to_s
+    client.gross_amount = @total.to_s
     client.commodity    = params["commodity"]
 
     client.billing_address_different_with_shipping_address = BILLING_DIFFERENT_ADDRESS
@@ -98,6 +103,7 @@ class VeritransController < ApplicationController
   #      "sessionId"=>"session837985748788668181718189"}
   def finish
     # logic after success transaction accured
+    clean_stored_carts!
   end
 
   # need scenario that could be try

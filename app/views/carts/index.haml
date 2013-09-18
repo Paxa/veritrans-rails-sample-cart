@@ -1,26 +1,31 @@
 - @page_title = "Checkout page"
 .checkout-page
-  %table{border: "1", cellpadding: "6", cellspacing: "1"}
-    %tr
-      %th Name
-      %th Price
-      %th Quantity
-      %th Sub Total
-    - for cart in @carts
+  %table.items
+    %thead
       %tr
-        %td= cart.product.name
-        %td= number_to_currency cart.product.price
-        %td= cart.quantity
-        %td= number_to_currency cart.sub_total
-    %tr
-      %td{colspan: "2"}
-      %td{style: "text-align=right"}
-        %strong Total
-      %td{style: "text-align=right"}
-        %strong= number_to_currency @total
-  %br/
-  %h1
-    %u Shipping Information
+        %th Name
+        %th Price
+        %th Quantity
+        %th.subtotal Sub Total
+    %tbody
+      - for cart in @carts
+        %tr
+          %td
+            %strong= cart.product.name
+          %td= number_to_currency cart.product.price
+          %td= cart.quantity
+          %td.subtotal= number_to_currency cart.sub_total
+      %tr
+        %td{colspan: "2"}
+          = form_tag :clear_carts, :method => :delete do
+            = button_tag "Delete all items"
+        %td{style: "text-align=right"}
+          %strong Total
+        %td{style: "text-align=right"}
+          %strong= number_to_currency @total
+
+  %h2 Shipping Information
+
   = form_tag 'confirm' do
     %table.fields
       %tr

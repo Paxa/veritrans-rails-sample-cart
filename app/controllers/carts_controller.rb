@@ -1,17 +1,13 @@
 class CartsController < ApplicationController
   def index
-    @carts = Cart.all
-    @total = Cart.select(:sub_total).sum(:sub_total)
-  end
+    @carts = session_stored_carts
+    @total = @carts.to_a.map(&:sub_total).inject(:+)
 
-  def show
-  end
-
-  def new
+    render @total.to_f == 0.0 ? :empty : :index
   end
 
   def create
-    item = Cart.where(product_id: cart_params[:product_id]).first
+    item = session_stored_carts.where(product_id: cart_params[:product_id]).first
 
     if item
       item.quantity = item.quantity.to_i + cart_params[:quantity].to_i
@@ -20,19 +16,16 @@ class CartsController < ApplicationController
     end
 
     if item.save
+      store_cart_in_session!(item)
       flash[:notice] = "Successfully Add to cart."
     end
 
     redirect_to carts_url
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
+    clean_stored_carts!
+    redirect_to :root, :notice => "Shopping cart cleaned"
   end
 
   private

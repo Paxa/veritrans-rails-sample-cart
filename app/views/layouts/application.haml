@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title= yield(:title) || @page_title || "Example cart - veritrans"
+    %title= page_title
     = stylesheet_link_tag :application
     = # we don't need it now
     = #javascript_include_tag :application
@@ -15,6 +15,14 @@
       %header
         = link_to image_tag('logo.png'), :root
         %h4 You are seeing VT-Web example store
+
+        - if current_carts.present?
+          .cart
+            = #image_tag 
+            = pluralize current_carts.map(&:quantity).inject(:+), "item"
+            %br
+            = link_to :carts do
+              = number_to_currency current_carts.map(&:sub_total).inject(:+)
 
       .content
         - flash.each do |name, msg|

@@ -1,6 +1,8 @@
 Store::Application.routes.draw do
   resources :products, :only => [:index]
-  resources :carts
+  resources :carts, :only => [:create, :index] do
+    delete :clear, :on => :collection, :to => "carts#destroy"
+  end
 
 =begin
   resource :cart do
@@ -13,7 +15,7 @@ Store::Application.routes.draw do
 =end
 
   match 'confirm'      => 'veritrans#confirm',      :via => :post # confirmation autosubmit to veritrans server
-  match 'unfinish'     => 'veritrans#unfinish',   :via => :post # canceling transaction redirect back to merchant-web
+  match 'unfinish'     => 'veritrans#unfinish',     :via => :post # canceling transaction redirect back to merchant-web
   match 'notification' => 'veritrans#notification', :via => :post # server to server notification to merchant-web
   match 'finish'       => 'veritrans#finish',       :via => :post # successfull transaction redirect back to merchant-web
   match 'error'        => 'veritrans#error',        :via => :post # error transaction redirect back to merchant-web
