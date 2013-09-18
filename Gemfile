@@ -13,7 +13,7 @@ gem 'veritrans', '1.2.2'
 group :heroku do
   gem "pg"
   gem 'rails_12factor'
-  gem 'unicorn'
+  gem 'puma'
 end
 
 group :assets do

@@ -23,3 +23,9 @@ match 'error'   => 'veritrans#error',   :via => :post #...server to server redir
 Untuk membuat struktur database sample store dan generate sample data
 
 - `rake db:setup`
+
+### To run on heroku
+
+1. Make an heroku app via control panel
+2. run `git push heroku master`
+3. heroku run "rake db:migrate" (only first time)
