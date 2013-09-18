@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 gem 'haml'
 
 gem 'mysql2', :group => :development
+gem "pg"
 
 # for Heroku
 gem "pg", :group => :production
@@ -19,11 +20,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :assets do
+#group :development, :assets do
   gem 'sass-rails', '~> 4.0'
   gem 'bourbon'
   gem 'neat'
-end
+#end
 
 gem 'jquery-rails'
 

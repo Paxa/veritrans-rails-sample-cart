@@ -2,7 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-Bundler.require(:default, :test, Rails.env)
+Bundler.require(:default, Rails.env)
 
 module Store
   class Application < Rails::Application
