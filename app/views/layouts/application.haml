@@ -18,11 +18,12 @@
 
         - if current_carts.present?
           .cart
-            = #image_tag 
-            = pluralize current_carts.map(&:quantity).inject(:+), "item"
-            %br
-            = link_to :carts do
-              = number_to_currency current_carts.map(&:sub_total).inject(:+)
+            = image_tag "cart.png"
+            %span
+              = pluralize current_carts.map(&:quantity).inject(:+), "item"
+              %br
+              = link_to :carts do
+                = number_to_currency current_carts.map(&:sub_total).inject(:+)
 
       .content
         - flash.each do |name, msg|

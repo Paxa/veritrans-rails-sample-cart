@@ -42,11 +42,19 @@ html
       :text-align center
     > .cart
       +span-columns(3)
-      :height 30px
+      :height 36px
       :font-size 13px
       :line-height 18px
-      a
-        :color $link_color
+      span
+        +inline-block
+        :margin-left 4px
+        a
+          :color $link_color
+      img
+        +inline-block
+        :height 30px
+        :position relative
+        :top 3px
 
   .content
     +clearfix
