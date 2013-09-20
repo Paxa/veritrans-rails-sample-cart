@@ -3,6 +3,8 @@ veritrans-rails-sample-cart
 
 Example implementation of Veritrans VTLink integration checkout using Ruby on Rails
 
+Online demo available at [http://veritrans-rails-sample-cart.herokuapp.com](http://veritrans-rails-sample-cart.herokuapp.com/ "online demo")
+
 Langkah-langkah code integrasi:
 
 - Tambahkan `gem "veritrans"` di "Gemfile"
@@ -24,8 +26,17 @@ Untuk membuat struktur database sample store dan generate sample data
 
 - `rake db:setup`
 
-### To run on heroku
+How to run on heroku
+--------------------
 
 1. Make an heroku app via control panel
 2. run `git push heroku master`
 3. heroku run "rake db:migrate" (only first time)
+
+
+Credits
+-------
+
+![Veritrans](https://www.veritrans.co.id/images/logo-small.png)
+
+This application is example of integration with [Veritrans payment gateway](https://www.veritrans.co.id)
