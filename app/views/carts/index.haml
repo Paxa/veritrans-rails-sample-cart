@@ -58,4 +58,16 @@
 
     .form-buttons
       = submit_tag("Go to checkout page")
-      = submit_tag("I'm lazy, fill form for me")
+      = submit_tag("I'm lazy, fill form for me", :onClick => "fillForm(); return false;")
+
+:javascript
+  var $ = function (selector) { return document.querySelector(selector); };
+  function fillForm () {
+    $('#shipping_first_name').value = "Peter";
+    $('#shipping_last_name').value = "Lee";
+    $('#shipping_address1').value = "jln. Kejaksaan, 1a."
+    $('#shipping_city').value = "Jakarta";
+    $('#shipping_postal_code').value = "13430";
+    $('#shipping_phone').value = "081234567890";
+    $('#email').value = "peter@example.com";
+  }
