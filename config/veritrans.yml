@@ -6,7 +6,7 @@ development:
   unfinish_payment_return_url: "http://bit.ly/UnfinishPayment"
   finish_payment_return_url: "http://bit.ly/FinishPayment"
   error_payment_return_url: "http://bit.ly/ErrorPayment"
-  server_host: "http://192.168.10.143:3000" #"http://117.102.113.10:666" #"http://10.2.250.31"
+  server_host: https://vtweb.veritrans.co.id
 
 production:
   merchant_id: "A100000000000001000012"
@@ -14,4 +14,4 @@ production:
   unfinish_payment_return_url: "http://localhost:3000/cancel_pay"
   finish_payment_return_url: "http://localhost:3000/finish"
   error_payment_return_url: "http://localhost:3000/error"
-  server_host: "http://10.2.250.31"
+  server_host: https://vtweb.veritrans.co.id
