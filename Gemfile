@@ -8,6 +8,7 @@ gem 'mysql2'
 gem "pg", :group => :development
 
 gem 'veritrans', '1.2.2'
+#gem 'veritrans', :path => '../veritrans-ruby'
 
 # for Heroku
 group :heroku do

@@ -6,12 +6,12 @@ development:
   unfinish_payment_return_url: "http://bit.ly/UnfinishPayment"
   finish_payment_return_url: "http://bit.ly/FinishPayment"
   error_payment_return_url: "http://bit.ly/ErrorPayment"
-  server_host: https://vtweb.veritrans.co.id
+  server_host: http://10.2.250.31
 
 production:
   merchant_id: "A100000000000001000012"
   merchant_hash_key: "d1832e368b101a814dd3f44b4b6305d50bb0bcca910b6055e406404e0ed33634"
-  unfinish_payment_return_url: "http://localhost:3000/cancel_pay"
-  finish_payment_return_url: "http://localhost:3000/finish"
-  error_payment_return_url: "http://localhost:3000/error"
+  unfinish_payment_return_url: "http://veritrans-rails-sample-cart.herokuapp.com/cancel_pay"
+  finish_payment_return_url: "http://veritrans-rails-sample-cart.herokuapp.com/finish"
+  error_payment_return_url: "http://veritrans-rails-sample-cart.herokuapp.com/error"
   server_host: https://vtweb.veritrans.co.id
